@@ -14,6 +14,12 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
+COPY docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 RUN useradd -u 1000 -m dev && chown -R dev:dev /var/www
 
 USER dev
+
+ENTRYPOINT ["entrypoint.sh"]
+CMD ["php-fpm"]
