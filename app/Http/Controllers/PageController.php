@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+
 class PageController extends Controller
 {
     public function index()
@@ -16,11 +18,7 @@ class PageController extends Controller
 
     public function urunler()
     {
-        $urunler = [
-            ['ad' => 'Klavye', 'fiyat' => 450.50, 'stok' => 12, 'kategori' => 'elektronik'],
-            ['ad' => 'Mouse',  'fiyat' => 220.00, 'stok' => 0,  'kategori' => 'elektronik'],
-            ['ad' => 'Tişört', 'fiyat' => 180.00, 'stok' => 5,  'kategori' => 'giyim'],
-        ];
+        $urunler = Product::all();
 
         return view('urunler', ['urunler' => $urunler]);
     }
