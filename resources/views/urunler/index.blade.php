@@ -13,7 +13,7 @@
 
     @forelse ($urunler as $urun)
         <div>
-            <h3>{{ $urun->name }}</h3>
+            <h3><a href="/urunler/{{ $urun->id }}">{{ $urun->name }}</a></h3>
             <p>{{ $urun->price }} TL</p>
             <p>{{ $urun->description }}</p>
         </div>
