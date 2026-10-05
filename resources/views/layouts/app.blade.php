@@ -9,7 +9,6 @@
         <nav>
         <a href="/">Anasayfa</a>
         <a href="/hakkinda">Hakkında</a>
-        <a href="/urunler">Ürünler</a>
 
         @auth
             <span>{{ auth()->user()->full_name }}</span>
