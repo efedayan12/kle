@@ -6,12 +6,22 @@
     <title>@yield('baslik', 'kle')</title>
 </head>
 <body>
-    <nav>
+        <nav>
         <a href="/">Anasayfa</a>
         <a href="/hakkinda">Hakkında</a>
         <a href="/urunler">Ürünler</a>
-    </nav>
 
+        @auth
+            <span>{{ auth()->user()->full_name }}</span>
+            <form action="/cikis" method="POST" style="display:inline">
+                @csrf
+                <button type="submit">Çıkış</button>
+            </form>
+        @else
+            <a href="/giris">Giriş</a>
+            <a href="/kayit">Kayıt Ol</a>
+        @endauth
+    </nav>
     <main>
         @yield('icerik')
     </main>
