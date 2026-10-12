@@ -74,3 +74,28 @@ a { color: inherit; text-decoration: none; }
     padding: 48px 20px; text-align: center; color: var(--soluk);
     background: var(--beyaz); border: 1px dashed var(--cizgi); border-radius: var(--kose);
 }
+/* Formlar */
+.form-kart { max-width: 560px; margin: 0 auto; padding: 32px; background: var(--beyaz); border: 1px solid var(--cizgi); border-radius: var(--kose); }
+.form-kart.dar { max-width: 420px; }
+.form-kart h1 { margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.5px; }
+.form-kart .alt-baslik { margin-bottom: 24px; }
+
+.alan { margin-bottom: 18px; }
+.alan label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 700; }
+.alan input, .alan textarea {
+    width: 100%; padding: 12px 14px;
+    font: inherit; color: var(--metin);
+    background: var(--zemin); border: 1px solid var(--cizgi); border-radius: 10px;
+    outline: none; transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.alan textarea { min-height: 120px; resize: vertical; }
+.alan input:focus, .alan textarea:focus { background: var(--beyaz); border-color: var(--ana); box-shadow: 0 0 0 4px rgba(255, 80, 80, .12); }
+.alan .hatali { border-color: #d93636; }
+.alan-hata { display: block; margin-top: 6px; color: #d93636; font-size: 13px; font-weight: 600; }
+
+.form-eylem { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
+.btn-blok { width: 100%; height: 46px; margin-top: 8px; }
+.form-alt { margin: 20px 0 0; text-align: center; color: var(--soluk); }
+.form-alt a { color: var(--ana); font-weight: 700; }
+
+.bildirim-uyari { background: #fff4e5; color: #9a5b00; border: 1px solid #ffd9a8; }
