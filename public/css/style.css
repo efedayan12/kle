@@ -1,0 +1,76 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+    --ana: #ff5050;
+    --ana-koyu: #e64545;
+    --metin: #1f2330;
+    --soluk: #6b7080;
+    --cizgi: #e6e8ee;
+    --zemin: #f6f7fb;
+    --beyaz: #ffffff;
+    --kose: 12px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Manrope', system-ui, sans-serif;
+    color: var(--metin);
+    background: var(--zemin);
+    line-height: 1.5;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.sayfa { padding-top: 32px; padding-bottom: 56px; }
+
+/* Üst menü */
+.site-header { background: var(--beyaz); border-bottom: 1px solid var(--cizgi); }
+.nav { display: flex; align-items: center; gap: 28px; height: 68px; }
+.logo { font-size: 24px; font-weight: 800; color: var(--ana); letter-spacing: -0.5px; }
+.nav-links { display: flex; gap: 20px; }
+.nav-links a { color: var(--soluk); font-weight: 600; }
+.nav-links a:hover, .nav-links a.aktif { color: var(--metin); }
+.nav-user { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.nav-user form { margin: 0; }
+.user-name { font-weight: 600; }
+
+/* Butonlar */
+.btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 40px; padding: 0 18px;
+    border: 1px solid transparent; border-radius: 999px;
+    font: inherit; font-weight: 700; cursor: pointer;
+    transition: background .2s, border-color .2s;
+}
+.btn-primary { background: var(--ana); color: #fff; }
+.btn-primary:hover { background: var(--ana-koyu); }
+.btn-light { background: var(--beyaz); border-color: var(--cizgi); color: var(--metin); }
+.btn-light:hover { border-color: var(--soluk); }
+/* Sayfa başlığı */
+.sayfa-baslik { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.sayfa-baslik h1 { margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.5px; }
+.alt-baslik { margin: 4px 0 0; color: var(--soluk); }
+
+/* Bildirimler */
+.bildirim { padding: 12px 16px; margin-bottom: 20px; border-radius: var(--kose); font-weight: 600; }
+.bildirim-basarili { background: #e8f7ee; color: #1d7a46; border: 1px solid #bfe8cf; }
+
+/* Ürün kartları */
+.urun-listesi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.urun-karti {
+    display: flex; flex-direction: column;
+    padding: 22px; background: var(--beyaz);
+    border: 1px solid var(--cizgi); border-radius: var(--kose);
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.urun-karti:hover { transform: translateY(-3px); border-color: var(--ana); box-shadow: 0 12px 28px -16px rgba(31, 35, 48, .35); }
+.urun-karti h3 { margin: 0 0 8px; font-size: 18px; }
+.urun-aciklama { flex: 1; margin: 0 0 18px; color: var(--soluk); font-size: 14px; }
+.urun-fiyat { font-size: 20px; font-weight: 800; color: var(--ana); }
+
+.bos-durum {
+    grid-column: 1 / -1;
+    padding: 48px 20px; text-align: center; color: var(--soluk);
+    background: var(--beyaz); border: 1px dashed var(--cizgi); border-radius: var(--kose);
+}

@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $urunler = Product::all();
+        $urunler = Product::latest()->get();
 
         return view('urunler.index', ['urunler' => $urunler]);
     }
