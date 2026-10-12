@@ -61,6 +61,7 @@ docker compose exec app composer install        # bağımlılıkları kur
 1. http://localhost adresinden **Kayıt Ol** sayfasına gidip hesap oluşturun.
 2. Kayıttan sonra ürün listesine yönlendirilirsiniz.
 3. **+ Yeni ürün** ile ürün ekleyin; ürüne tıklayarak detayını görün, düzenleyin veya silin.
+4. > İlk açılışta bağımlılıklar kurulurken birkaç dakika **502 Bad Gateway** görebilirsiniz; bu normaldir. `docker compose logs -f app` çıktısında `ready to handle connections` satırı göründüğünde sayfayı yenileyin.
 
 İsterseniz örnek bir kullanıcı oluşturabilirsiniz (e-posta `test@example.com`, şifre `password`):
 
