@@ -3,7 +3,7 @@
 @section('baslik', 'Ürünü Düzenle')
 
 @section('icerik')
-        <div class="form-kart">
+    <div class="form-kart">
         <h1>Ürünü Düzenle</h1>
         <p class="alt-baslik">Bilgileri değiştirip kaydet.</p>
 

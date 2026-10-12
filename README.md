@@ -48,3 +48,39 @@ docker compose logs -f app                      # logları izle
 docker compose exec app php artisan migrate     # migration çalıştır
 docker compose exec app composer install        # bağımlılıkları kur
 ```
+## Özellikler
+
+- Kayıt olma, giriş yapma ve çıkış
+- Giriş yapmamış kullanıcı ürünleri göremez; giriş sayfasına yönlendirilir
+- Ürün ekleme, listeleme, detay görüntüleme, düzenleme ve silme (CRUD)
+- Türkçe form doğrulama mesajları
+- Telefon, tablet ve bilgisayarda uyumlu (responsive) arayüz
+
+## Kullanım
+
+1. http://localhost adresinden **Kayıt Ol** sayfasına gidip hesap oluşturun.
+2. Kayıttan sonra ürün listesine yönlendirilirsiniz.
+3. **+ Yeni ürün** ile ürün ekleyin; ürüne tıklayarak detayını görün, düzenleyin veya silin.
+
+İsterseniz örnek bir kullanıcı oluşturabilirsiniz (e-posta `test@example.com`, şifre `password`):
+
+```bash
+docker compose exec app php artisan db:seed
+```
+
+## Testler
+
+```bash
+docker compose exec app php artisan test
+```
+
+## Sorun giderme
+
+**80 numaralı port kullanımda hatası:** Bilgisayarınızda 80 portunu kullanan başka bir program varsa `compose.yaml` içinde `"80:80"` satırını `"8080:80"` yapın ve uygulamayı http://localhost:8080 adresinden açın.
+
+**Veritabanını sıfırlamak için:**
+
+```bash
+docker compose down -v
+docker compose up -d
+```
