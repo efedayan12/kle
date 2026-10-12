@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         Auth::login($kullanici);
 
-        return redirect('/urunler');
+        return redirect('/');
     }
 
     public function girisFormu()
@@ -48,7 +48,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/urunler');
+        return redirect('/');
     }
 
     public function cikis(Request $request)

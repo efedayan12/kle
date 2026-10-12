@@ -29,7 +29,7 @@ class ProductController extends Controller
 
         Product::create($veri);
 
-        return redirect('/urunler')->with('basarili', 'Ürün eklendi.');
+        return redirect('/')->with('basarili', 'Ürün eklendi.');
     }
 public function show(Product $urun)
     {
@@ -58,6 +58,6 @@ public function show(Product $urun)
     {
         $urun->delete();
 
-        return redirect('/urunler')->with('basarili', 'Ürün silindi.');
+        return redirect('/')->with('basarili', 'Ürün silindi.');
     }
 }

@@ -7,7 +7,7 @@
         <p>{{ session('basarili') }}</p>
     @endif
 
-    <p><a href="/urunler">← Ürün listesi</a></p>
+    <p><a href="/">← Ürün listesi</a></p>
 
     <h1>{{ $urun->name }}</h1>
     <p>{{ $urun->price }} TL</p>
