@@ -2,45 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function kayitFormu()
+    public function showRegisterForm()
     {
-        return view('auth.kayit');
+        return view('auth.register');
     }
 
-    public function kayit(Request $request)
+    public function register(RegisterRequest $request)
     {
-        $veri = $request->validate([
-            'full_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed',
-        ]);
+        $user = User::create($request->validated());
 
-        $kullanici = User::create($veri);
+        Auth::login($user);
 
-        Auth::login($kullanici);
-
-        return redirect('/');
+        return redirect()->route('products.index');
     }
 
-    public function girisFormu()
+    public function showLoginForm()
     {
-        return view('auth.giris');
+        return view('auth.login');
     }
 
-    public function giris(Request $request)
+    public function login(LoginRequest $request)
     {
-        $bilgiler = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if (! Auth::attempt($bilgiler)) {
+        if (! Auth::attempt($request->validated())) {
             return back()
                 ->withErrors(['email' => 'E-posta veya şifre hatalı.'])
                 ->onlyInput('email');
@@ -48,16 +39,16 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/');
+        return redirect()->route('products.index');
     }
 
-    public function cikis(Request $request)
+    public function logout(Request $request)
     {
         Auth::logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/giris');
+        return redirect()->route('login');
     }
 }

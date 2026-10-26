@@ -2,62 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $urunler = Product::latest()->get();
+        $products = Product::latest()->get();
 
-        return view('urunler.index', ['urunler' => $urunler]);
+        return view('products.index', ['products' => $products]);
     }
 
     public function create()
     {
-        return view('urunler.create');
+        return view('products.create');
     }
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $veri = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0',
-            'description' => 'required|string',
-        ]);
+        Product::create($request->validated());
 
-        Product::create($veri);
-
-        return redirect('/')->with('basarili', 'Ürün eklendi.');
-    }
-public function show(Product $urun)
-    {
-        return view('urunler.show', ['urun' => $urun]);
+        return redirect()->route('products.index')->with('success', 'Ürün eklendi.');
     }
 
-    public function edit(Product $urun)
+    public function show(Product $product)
     {
-        return view('urunler.edit', ['urun' => $urun]);
+        return view('products.show', ['product' => $product]);
     }
 
-    public function update(Request $request, Product $urun)
+    public function edit(Product $product)
     {
-        $veri = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0',
-            'description' => 'required|string',
-        ]);
-
-        $urun->update($veri);
-
-        return redirect('/urunler/' . $urun->id)->with('basarili', 'Ürün güncellendi.');
+        return view('products.edit', ['product' => $product]);
     }
 
-    public function destroy(Product $urun)
+    public function update(ProductRequest $request, Product $product)
     {
-        $urun->delete();
+        $product->update($request->validated());
 
-        return redirect('/')->with('basarili', 'Ürün silindi.');
+        return redirect()->route('products.show', $product)->with('success', 'Ürün güncellendi.');
+    }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+
+        return redirect()->route('products.index')->with('success', 'Ürün silindi.');
     }
 }

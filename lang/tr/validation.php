@@ -7,6 +7,7 @@ return [
     'email' => ':attribute geçerli bir e-posta adresi olmalıdır.',
     'unique' => 'Bu :attribute zaten kullanılıyor.',
     'confirmed' => ':attribute tekrarı eşleşmiyor.',
+    'decimal' => ':attribute en fazla 2 ondalık basamak içerebilir.',
 
     'min' => [
         'numeric' => ':attribute en az :min olmalıdır.',

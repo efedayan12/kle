@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 class PageController extends Controller
 {
-
-    public function hakkinda()
+    public function about()
     {
-        return view('hakkinda');
+        return view('about');
     }
 }
